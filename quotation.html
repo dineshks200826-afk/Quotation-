@@ -1,0 +1,1299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORIA Software Solution - Quotation</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #e9edf3;
+    color: #1e293b;
+    padding: 15px;
+}
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+    background: white;
+    padding: 24px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border-bottom: 2px solid #0f2747;
+
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.company-name {
+    color: #0f2747;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.company-subtitle {
+    color: #64748b;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+.quotation-box {
+    text-align: right;
+}
+
+.quotation-box h2 {
+    color: #0f2747;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.quotation-box label {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.quotation-box input {
+    width: 135px;
+    padding: 5px;
+    margin-top: 3px;
+    border: 1px solid #cbd5e1;
+    border-radius: 2px;
+}
+
+
+/* =========================
+   FROM / TO SECTION
+========================= */
+
+.address-section {
+
+    display: grid;
+
+    /* FROM LEFT / TO RIGHT */
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.address-box {
+
+    border: 1px solid #cbd5e1;
+
+    padding: 11px;
+
+    border-radius: 3px;
+
+    min-height: 130px;
+}
+
+.address-title {
+
+    background: #0f2747;
+
+    color: white;
+
+    padding: 6px 9px;
+
+    margin: -11px -11px 9px -11px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.address-box p {
+
+    line-height: 1.45;
+
+    font-size: 12px;
+
+    color: #475569;
+
+    margin-bottom: 5px;
+}
+
+
+/* TO INPUTS */
+
+.to-input {
+
+    width: 100%;
+
+    padding: 5px;
+
+    margin-top: 2px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 2px;
+
+    font-size: 11px;
+}
+
+.to-textarea {
+
+    width: 100%;
+
+    height: 42px;
+
+    resize: none;
+
+    padding: 5px;
+
+    margin-top: 2px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 2px;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   QUOTATION ITEMS
+========================= */
+
+.table-section {
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.section-title {
+
+    background: #0f2747;
+
+    color: white;
+
+    padding: 7px 11px;
+
+    margin-bottom: 8px;
+
+    border-radius: 3px;
+
+    font-size: 13px;
+}
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 650px;
+}
+
+th {
+
+    background: #0f2747;
+
+    color: white;
+
+    padding: 7px;
+
+    border: 1px solid #cbd5e1;
+
+    font-size: 12px;
+}
+
+td {
+
+    padding: 4px;
+
+    border: 1px solid #cbd5e1;
+
+    text-align: center;
+}
+
+td input {
+
+    width: 100%;
+
+    padding: 5px;
+
+    border: 1px solid #d1d5db;
+
+    /* SMALL SERIAL BOX RADIUS */
+
+    border-radius: 2px;
+
+    font-size: 12px;
+}
+
+
+/* SERIAL NUMBER */
+
+td:first-child input {
+
+    width: 55px;
+
+    border-radius: 2px;
+
+    text-align: center;
+}
+
+.price-input {
+    text-align: right;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-section {
+
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-top: 7px;
+}
+
+button {
+
+    border: none;
+
+    padding: 7px 12px;
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 11px;
+}
+
+.add-row {
+
+    background: #0f2747;
+
+    color: white;
+}
+
+.add-column {
+
+    background: #475569;
+
+    color: white;
+}
+
+.preview-btn {
+
+    background: #1d4ed8;
+
+    color: white;
+
+    padding: 10px 20px;
+
+    font-size: 13px;
+}
+
+.delete-btn {
+
+    background: #dc2626;
+
+    color: white;
+
+    padding: 5px 8px;
+
+    font-size: 10px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+/* =========================
+   TOTAL
+========================= */
+
+.total-section {
+
+    margin-top: 10px;
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+.totals {
+    width: 270px;
+}
+
+.total-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 6px;
+
+    border-bottom: 1px solid #cbd5e1;
+
+    font-size: 12px;
+}
+
+.grand-total {
+
+    background: #0f2747;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+
+    margin-top: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+}
+
+.terms {
+
+    max-width: 55%;
+
+    color: #64748b;
+
+    line-height: 1.4;
+
+    font-size: 10px;
+}
+
+.terms strong {
+    color: #334155;
+}
+
+.signature {
+
+    width: 210px;
+
+    text-align: center;
+}
+
+.signature-line {
+
+    border-bottom: 1px solid #1e293b;
+
+    height: 38px;
+
+    margin-bottom: 5px;
+}
+
+.signature-name {
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: #0f2747;
+}
+
+.signature-title {
+
+    color: #475569;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   GENERATE BUTTON
+========================= */
+
+.generate-section {
+
+    text-align: center;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   PREVIEW MODE
+========================= */
+
+.preview-mode .control-column,
+.preview-mode .button-section,
+.preview-mode .generate-section {
+
+    display: none !important;
+}
+
+.preview-mode input,
+.preview-mode textarea {
+
+    border: none;
+
+    background: transparent;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .top-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quotation-box {
+        text-align: left;
+    }
+
+    .address-section {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .terms {
+        max-width: 100%;
+    }
+
+    .signature {
+        align-self: flex-end;
+    }
+}
+
+
+/* =========================
+   A4 SINGLE PAGE PRINT
+========================= */
+
+@page {
+    size: A4 portrait;
+    margin: 7mm;
+}
+
+@media print {
+
+    body {
+
+        background: white;
+
+        padding: 0;
+
+        margin: 0;
+    }
+
+    .container {
+
+        width: 100%;
+
+        max-width: none;
+
+        padding: 5px;
+
+        margin: 0;
+
+        border-radius: 0;
+
+        box-shadow: none;
+    }
+
+    .control-column,
+    .button-section,
+    .generate-section {
+
+        display: none !important;
+    }
+
+    input,
+    textarea {
+
+        border: none !important;
+
+        background: transparent !important;
+
+        outline: none !important;
+    }
+
+    .top-header {
+        margin-bottom: 7px;
+    }
+
+    .address-section {
+        margin-bottom: 7px;
+    }
+
+    .table-section {
+        margin-top: 7px;
+    }
+
+    .section-title {
+        padding: 5px 8px;
+    }
+
+    th {
+        padding: 4px;
+    }
+
+    td {
+        padding: 2px;
+    }
+
+    td input {
+        padding: 3px;
+    }
+
+    .total-section {
+        margin-top: 7px;
+    }
+
+    .footer {
+        margin-top: 10px;
+    }
+
+    .signature-line {
+        height: 30px;
+    }
+
+}
+
+
+/* Prevent page breaking */
+
+@media print {
+
+    .container,
+    .address-section,
+    .table-section,
+    .total-section,
+    .footer {
+
+        break-inside: avoid;
+
+        page-break-inside: avoid;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container" id="quotation">
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="top-header">
+
+    <div>
+
+        <div class="company-name">
+            NEXORIA Software Solution
+        </div>
+
+        <div class="company-subtitle">
+            Software Development & Digital Solutions
+        </div>
+
+    </div>
+
+
+    <div class="quotation-box">
+
+        <h2>QUOTATION</h2>
+
+        <label>
+            Quotation No / ID
+        </label>
+
+        <br>
+
+        <input
+            type="text"
+            id="quotationNo"
+            placeholder="NEX-001"
+        >
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FROM LEFT / TO RIGHT
+========================= -->
+
+<div class="address-section">
+
+
+    <!-- FROM - LEFT -->
+
+    <div class="address-box">
+
+        <div class="address-title">
+            FROM
+        </div>
+
+        <p>
+            <strong>
+                NEXORIA Software Solution
+            </strong>
+        </p>
+
+        <p>
+            Sivagangai,<br>
+            Tamil Nadu,<br>
+            India
+        </p>
+
+        <p>
+            Phone: 8608290185
+        </p>
+
+        <p>
+            Email: nexoriaworkspace@gmail.com
+        </p>
+
+    </div>
+
+
+
+    <!-- TO - RIGHT -->
+
+    <div class="address-box">
+
+        <div class="address-title">
+            TO
+        </div>
+
+
+        <p>
+
+            <strong>Client Name</strong>
+
+            <input
+                type="text"
+                id="clientName"
+                class="to-input"
+                placeholder="Enter client name"
+            >
+
+        </p>
+
+
+        <p>
+
+            <strong>Client Company</strong>
+
+            <input
+                type="text"
+                id="clientCompany"
+                class="to-input"
+                placeholder="Enter company name"
+            >
+
+        </p>
+
+
+        <p>
+
+            <strong>Address</strong>
+
+            <textarea
+                id="clientAddress"
+                class="to-textarea"
+                placeholder="Enter client address"
+            ></textarea>
+
+        </p>
+
+
+        <p>
+
+            <strong>Date:</strong>
+
+            <input
+                type="date"
+                id="quotationDate"
+                class="to-input"
+            >
+
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     QUOTATION ITEMS
+========================= -->
+
+<div class="table-section">
+
+    <h3 class="section-title">
+        QUOTATION ITEMS
+    </h3>
+
+
+    <table id="itemsTable">
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Serial No
+                </th>
+
+                <th>
+                    Description
+                </th>
+
+                <th>
+                    Price
+                </th>
+
+                <th class="control-column">
+                    Action
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody id="itemBody">
+
+            <tr>
+
+                <td>
+
+                    <input
+                        type="number"
+                        class="serial"
+                        value="1"
+                    >
+
+                </td>
+
+
+                <td>
+
+                    <input
+                        type="text"
+                        placeholder="Enter description"
+                    >
+
+                </td>
+
+
+                <td>
+
+                    <input
+                        type="number"
+                        class="price-input price"
+                        value="0"
+                        min="0"
+                        oninput="calculateTotal()"
+                    >
+
+                </td>
+
+
+                <td class="control-column">
+
+                    <button
+                        class="delete-btn"
+                        onclick="deleteRow(this)"
+                    >
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+
+    <div class="button-section">
+
+        <button
+            class="add-row"
+            onclick="addRow()"
+        >
+            + Add Row
+        </button>
+
+
+        <button
+            class="add-column"
+            onclick="addColumn()"
+        >
+            + Add Custom Column
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     TOTAL
+========================= -->
+
+<div class="total-section">
+
+    <div class="totals">
+
+
+        <div class="total-row">
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong>
+                ₹ <span id="subtotal">0.00</span>
+            </strong>
+
+        </div>
+
+
+        <div class="total-row grand-total">
+
+            <span>
+                Total Amount
+            </span>
+
+            <strong>
+                ₹ <span id="totalAmount">0.00</span>
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<div class="footer">
+
+
+    <div class="terms">
+
+        <strong>
+            Terms & Conditions
+        </strong>
+
+        <p>
+
+            • Prices are subject to the agreed quotation.<br>
+
+            • Payment terms will be mutually agreed upon.<br>
+
+            • This quotation is valid for the specified period.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="signature">
+
+        <div class="signature-line"></div>
+
+        <div class="signature-name">
+            Dinesh
+        </div>
+
+        <div class="signature-title">
+
+            CEO<br>
+
+            NEXORIA Software Solution
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     GENERATE
+========================= -->
+
+<div class="generate-section">
+
+    <button
+        class="preview-btn"
+        onclick="generatePreview()"
+    >
+        Generate Document Preview
+    </button>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   ADD ROW
+========================= */
+
+function addRow() {
+
+    const tbody =
+        document.getElementById("itemBody");
+
+    const row =
+        document.createElement("tr");
+
+    const rowNumber =
+        tbody.rows.length + 1;
+
+
+    row.innerHTML = `
+
+        <td>
+
+            <input
+                type="number"
+                class="serial"
+                value="${rowNumber}"
+            >
+
+        </td>
+
+        <td>
+
+            <input
+                type="text"
+                placeholder="Enter description"
+            >
+
+        </td>
+
+        <td>
+
+            <input
+                type="number"
+                class="price-input price"
+                value="0"
+                min="0"
+                oninput="calculateTotal()"
+            >
+
+        </td>
+
+        <td class="control-column">
+
+            <button
+                class="delete-btn"
+                onclick="deleteRow(this)"
+            >
+                Delete
+            </button>
+
+        </td>
+
+    `;
+
+
+    tbody.appendChild(row);
+
+}
+
+
+/* =========================
+   DELETE ROW
+========================= */
+
+function deleteRow(button) {
+
+    button
+        .closest("tr")
+        .remove();
+
+    updateSerialNumbers();
+
+    calculateTotal();
+
+}
+
+
+/* =========================
+   SERIAL NUMBERS
+========================= */
+
+function updateSerialNumbers() {
+
+    const serials =
+        document.querySelectorAll(".serial");
+
+
+    serials.forEach(
+        (input, index) => {
+
+            input.value =
+                index + 1;
+
+        }
+    );
+
+}
+
+
+/* =========================
+   CALCULATE TOTAL
+========================= */
+
+function calculateTotal() {
+
+    const prices =
+        document.querySelectorAll(".price");
+
+
+    let subtotal = 0;
+
+
+    prices.forEach(price => {
+
+        subtotal +=
+            Number(price.value) || 0;
+
+    });
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        subtotal.toFixed(2);
+
+
+    document.getElementById(
+        "totalAmount"
+    ).textContent =
+        subtotal.toFixed(2);
+
+}
+
+
+/* =========================
+   ADD CUSTOM COLUMN
+========================= */
+
+function addColumn() {
+
+    const columnName =
+        prompt(
+            "Enter custom column name:",
+            "Quantity"
+        );
+
+
+    if (!columnName) {
+
+        return;
+
+    }
+
+
+    const table =
+        document.getElementById(
+            "itemsTable"
+        );
+
+
+    const headerRow =
+        table.querySelector(
+            "thead tr"
+        );
+
+
+    const newHeader =
+        document.createElement("th");
+
+
+    newHeader.textContent =
+        columnName;
+
+
+    headerRow.insertBefore(
+        newHeader,
+        headerRow.lastElementChild
+    );
+
+
+    const rows =
+        table.querySelectorAll(
+            "tbody tr"
+        );
+
+
+    rows.forEach(row => {
+
+        const cell =
+            document.createElement("td");
+
+
+        const input =
+            document.createElement("input");
+
+
+        input.type = "text";
+
+
+        input.placeholder =
+            "Enter " + columnName;
+
+
+        cell.appendChild(input);
+
+
+        row.insertBefore(
+            cell,
+            row.lastElementChild
+        );
+
+    });
+
+}
+
+
+/* =========================
+   GENERATE PREVIEW
+========================= */
+
+function generatePreview() {
+
+    calculateTotal();
+
+
+    document
+        .getElementById("quotation")
+        .classList.add(
+            "preview-mode"
+        );
+
+
+    setTimeout(() => {
+
+        window.print();
+
+
+        document
+            .getElementById("quotation")
+            .classList.remove(
+                "preview-mode"
+            );
+
+    }, 300);
+
+}
+
+
+/* =========================
+   TODAY'S DATE
+========================= */
+
+document.getElementById(
+    "quotationDate"
+).value =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+</script>
+
+
+</body>
+
+</html>
+
